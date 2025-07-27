@@ -1,7 +1,6 @@
 import { auth0 } from "../../../lib/auth0";
 import { redirect } from "next/navigation";
-import ChatSidebar from "../../../components/ChatSidebar";
-import Head from "next/head";
+import ChatClient from "../../../components/Chat/ChatClient";
 
 const Chat = async () => {
   const session = await auth0.getSession();
@@ -11,17 +10,8 @@ const Chat = async () => {
   }
 
   return (
-    <div>
-      <Head>
-        <title>New Chat</title>
-      </Head>
-      <div className="grid h-screen grid-cols-[260px_1fr]">
-        <ChatSidebar />
-        <div className="bg-slate-100 flex flex-col">
-          <div className="flex-1">Chat Window</div>
-          <footer className="bg-white p-10 "></footer>
-        </div>
-      </div>
+    <div className="grid h-screen grid-cols-[260px_1fr]">
+      <ChatClient user={session.user} />
     </div>
   );
 };
