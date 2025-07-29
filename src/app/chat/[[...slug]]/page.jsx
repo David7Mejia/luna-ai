@@ -1,6 +1,6 @@
 import { auth0 } from "../../../lib/auth0";
 import { redirect } from "next/navigation";
-import ChatClient from "../../../components/Chat/ChatClient";
+import ChatComponent from "../../../components/ChatComponent"
 
 const Chat = async () => {
   const session = await auth0.getSession();
@@ -11,7 +11,7 @@ const Chat = async () => {
 
   return (
     <div className="grid h-screen grid-cols-[260px_1fr]">
-      <ChatClient user={session.user} />
+      <ChatComponent user={session.user} />
     </div>
   );
 };
