@@ -1,6 +1,22 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import Link from "next/link";
+
 const ChatSidebar = () => {
+  useEffect(() => {
+    const loadChatList = async () => {
+      const response = await fetch(`/api/get-chats`, {
+        method: "POST",
+      });
+
+      const json = await response.json();
+      console.log("CHAT LIST", json);
+    };
+
+    loadChatList();
+  }, []);
+
   return (
     <div id="sidebar-container" className="relative bg-gray-950 min-h-screen flex flex-col p-10">
       Luna AI

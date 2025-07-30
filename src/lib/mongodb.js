@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 
 const uri = process.env.MONGODB_URI;
 const options = {};
-
+console.log("MONGODB_URI:", process.env.MONGODB_URI);
 let client;
 let clientPromise;
 
@@ -27,4 +27,3 @@ if (process.env.NODE_ENV === "development") {
 // Export a module-scoped MongoClient promise. By doing this in a
 // separate module, the client can be shared across functions.
 export default clientPromise;
-n
